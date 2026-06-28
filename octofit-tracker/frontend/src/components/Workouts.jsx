@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { fetchApiItems } from '../api.js'
 
+const WORKOUTS_ENDPOINT = '/api/workouts/'
+
 function Workouts() {
   const [workouts, setWorkouts] = useState([])
   const [status, setStatus] = useState('loading')
@@ -9,7 +11,7 @@ function Workouts() {
   useEffect(() => {
     let isMounted = true
 
-    fetchApiItems('workouts')
+    fetchApiItems(WORKOUTS_ENDPOINT)
       .then((items) => {
         if (isMounted) {
           setWorkouts(items)

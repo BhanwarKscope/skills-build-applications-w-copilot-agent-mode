@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { fetchApiItems } from '../api.js'
 
+const ACTIVITIES_ENDPOINT = '/api/activities/'
+
 function Activities() {
   const [activities, setActivities] = useState([])
   const [status, setStatus] = useState('loading')
@@ -9,7 +11,7 @@ function Activities() {
   useEffect(() => {
     let isMounted = true
 
-    fetchApiItems('activities')
+    fetchApiItems(ACTIVITIES_ENDPOINT)
       .then((items) => {
         if (isMounted) {
           setActivities(items)

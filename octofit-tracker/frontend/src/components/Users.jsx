@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { fetchApiItems } from '../api.js'
 
+const USERS_ENDPOINT = '/api/users/'
+
 function Users() {
   const [users, setUsers] = useState([])
   const [status, setStatus] = useState('loading')
@@ -9,7 +11,7 @@ function Users() {
   useEffect(() => {
     let isMounted = true
 
-    fetchApiItems('users')
+    fetchApiItems(USERS_ENDPOINT)
       .then((items) => {
         if (isMounted) {
           setUsers(items)

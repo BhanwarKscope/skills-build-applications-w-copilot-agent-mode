@@ -4,7 +4,11 @@ export const API_BASE_URL = codespaceName
   ? `https://${codespaceName}-8000.app.github.dev/api`
   : '/api'
 
-export const getApiUrl = (component) => `${API_BASE_URL}/${component}/`
+export const getApiUrl = (endpoint) => {
+  const endpointPath = endpoint.startsWith('/api/') ? endpoint.replace('/api', '') : endpoint
+
+  return `${API_BASE_URL}${endpointPath.startsWith('/') ? endpointPath : `/${endpointPath}/`}`
+}
 
 export const normalizeResponseItems = (payload) => {
   if (Array.isArray(payload)) {
@@ -30,8 +34,8 @@ export const normalizeResponseItems = (payload) => {
   return []
 }
 
-export const fetchApiItems = async (component) => {
-  const response = await fetch(getApiUrl(component))
+export const fetchApiItems = async (endpoint) => {
+  const response = await fetch(getApiUrl(endpoint))
 
   if (!response.ok) {
     throw new Error(`Request failed with status ${response.status}`)

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { fetchApiItems } from '../api.js'
 
+const TEAMS_ENDPOINT = '/api/teams/'
+
 function Teams() {
   const [teams, setTeams] = useState([])
   const [status, setStatus] = useState('loading')
@@ -9,7 +11,7 @@ function Teams() {
   useEffect(() => {
     let isMounted = true
 
-    fetchApiItems('teams')
+    fetchApiItems(TEAMS_ENDPOINT)
       .then((items) => {
         if (isMounted) {
           setTeams(items)

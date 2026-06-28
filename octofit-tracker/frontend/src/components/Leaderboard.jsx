@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { fetchApiItems } from '../api.js'
 
+const LEADERBOARD_ENDPOINT = '/api/leaderboard/'
+
 function Leaderboard() {
   const [leaders, setLeaders] = useState([])
   const [status, setStatus] = useState('loading')
@@ -9,7 +11,7 @@ function Leaderboard() {
   useEffect(() => {
     let isMounted = true
 
-    fetchApiItems('leaderboard')
+    fetchApiItems(LEADERBOARD_ENDPOINT)
       .then((items) => {
         if (isMounted) {
           setLeaders(items)
