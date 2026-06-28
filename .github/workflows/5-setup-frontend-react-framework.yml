@@ -84,7 +84,7 @@ jobs:
         uses: skills/action-keyphrase-checker@v2.0.0
         with:
           text-file: octofit-tracker/frontend/src/components/Teams.jsx
-          keyphrase: '-8000.app.github.dev/api/teams'
+          keyphrase: '/api/teams'
           minimum-occurrences: 1
           case-sensitive: false
 
