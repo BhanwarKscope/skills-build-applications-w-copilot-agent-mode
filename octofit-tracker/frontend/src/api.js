@@ -5,6 +5,10 @@ export const API_BASE_URL = codespaceName
   : '/api'
 
 export const getApiUrl = (endpoint) => {
+  if (endpoint.startsWith('http://') || endpoint.startsWith('https://')) {
+    return endpoint
+  }
+
   const endpointPath = endpoint.startsWith('/api/') ? endpoint.replace('/api', '') : endpoint
 
   return `${API_BASE_URL}${endpointPath.startsWith('/') ? endpointPath : `/${endpointPath}/`}`

@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { fetchApiItems } from '../api.js'
 
-const USERS_ENDPOINT = '/api/users/'
+const USERS_ENDPOINT = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/users/`
+  : '/api/users/'
 
 function Users() {
   const [users, setUsers] = useState([])

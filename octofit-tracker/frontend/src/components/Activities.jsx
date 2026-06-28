@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { fetchApiItems } from '../api.js'
 
-const ACTIVITIES_ENDPOINT = '/api/activities/'
+const ACTIVITIES_ENDPOINT = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/activities/`
+  : '/api/activities/'
 
 function Activities() {
   const [activities, setActivities] = useState([])

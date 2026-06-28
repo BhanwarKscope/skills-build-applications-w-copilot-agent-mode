@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { fetchApiItems } from '../api.js'
 
-const LEADERBOARD_ENDPOINT = '/api/leaderboard/'
+const LEADERBOARD_ENDPOINT = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard/`
+  : '/api/leaderboard/'
 
 function Leaderboard() {
   const [leaders, setLeaders] = useState([])
